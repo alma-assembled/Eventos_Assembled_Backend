@@ -26,7 +26,7 @@ Este proyecto es el backend para el calendario de producción, utilizando Flask 
 
 ## Base de Datos
 Crea la base de datos ejecutando las siguientes instrucciones SQL en tu servidor MySQL:
-            
+    ```sh               
             REATE DATABASE IF NOT EXISTS `assembled_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE          utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
             USE `assembled_db`;
             DROP TABLE IF EXISTS `Eventos`;
@@ -47,4 +47,5 @@ Crea la base de datos ejecutando las siguientes instrucciones SQL en tu servidor
 
 ## Ejecución del Proyecto
 Ejecuta el servidor Docker:
+```sh    
         Docker-compose up -d
