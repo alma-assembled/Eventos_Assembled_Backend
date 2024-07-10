@@ -25,8 +25,8 @@ Este proyecto es el backend para el calendario de producción, utilizando Flask 
         JWT_KEY=D5*F?_1?-d$f*1
 
 ## Base de Datos
-            Crea la base de datos ejecutando las siguientes instrucciones SQL en tu servidor MySQL:
-            CREATE DATABASE IF NOT EXISTS `assembled_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+Crea la base de datos ejecutando las siguientes instrucciones SQL en tu servidor MySQL:
+        REATE DATABASE IF NOT EXISTS `assembled_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE          utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
             USE `assembled_db`;
             DROP TABLE IF EXISTS `Eventos`;
 
