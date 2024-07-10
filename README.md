@@ -16,6 +16,7 @@ Este proyecto es el backend para el calendario de producción, utilizando Flask 
    cd calendario-produccion-backend
 
 2. Crea un archivo .env en el directorio raíz del proyecto con las siguientes variables de entorno:
+    ```sh    
         MYSQL_HOST=127.0.0.1
         MYSQL_USER=user
         MYSQL_PASSWORD=pass
