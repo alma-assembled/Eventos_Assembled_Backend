@@ -11,6 +11,8 @@ COPY requirements.txt requirements.txt
 ENV FLASK_APP=index.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
+RUN pip install --upgrade pip
+
 # Instala las dependencias
 RUN pip install -r requirements.txt
 
