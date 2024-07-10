@@ -46,5 +46,5 @@ Crea la base de datos ejecutando las siguientes instrucciones SQL en tu servidor
 
 
 ## Ejecución del Proyecto
-        Ejecuta el servidor Docker:
+Ejecuta el servidor Docker:
         Docker-compose up -d
