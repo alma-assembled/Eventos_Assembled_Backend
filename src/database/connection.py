@@ -8,6 +8,8 @@ from src.utils.Logger import Logger
 
 
 def get_connection():
+
+    print(config('MYSQL_HOST') , ";",config('MYSQL_USER'),";", config('MYSQL_PASSWORD'),";",config('MYSQL_DB'))
     try:
         return pymysql.connect(
             host=config('MYSQL_HOST'),
