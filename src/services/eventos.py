@@ -9,7 +9,6 @@ from src.schemas.evento import eventos_schema
 from src.models.eventos import EventoModel
 
 class EventosService():
-
     @classmethod
     def get_eventos(cls):
         try:
@@ -51,7 +50,7 @@ class EventosService():
             Logger.add_to_log("error", str(ex))
             Logger.add_to_log("error", traceback.format_exc())
             return False
-       
+
     @classmethod
     def baja_evento(cls, id_evento):
         try:
