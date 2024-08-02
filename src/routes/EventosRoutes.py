@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-
+from flask_cors import cross_origin
 # Logger
 from src.utils.Logger import Logger
 # Services
@@ -8,7 +8,7 @@ from src.schemas.evento import eventos_schema
 
 main = Blueprint('eventos_blueprint', __name__)
 
-
+@cross_origin
 @main.route('/', methods=['GET'])
 def get_eventos():
     try:
@@ -21,7 +21,8 @@ def get_eventos():
         Logger.add_to_log("er:" , f"Error routes gets: {str(ex)}")
         print(ex)
         return jsonify({'message': "ERROR", 'success': False})
-    
+
+@cross_origin
 @main.route('/', methods=['POST'])
 def post_create_empleado():
     try:
@@ -41,6 +42,7 @@ def post_create_empleado():
         Logger.add_to_log(f"Error routes POSTEmpleados: {str(ex)}")
         return jsonify({'message': "ERROR", 'success': False}), 500
 
+@cross_origin
 @main.route('/<int:id_evento>', methods=['PUT'])
 def editar_evento(id_evento):    
     try:
@@ -53,6 +55,7 @@ def editar_evento(id_evento):
         Logger.add_to_log(f"Error: {str(ex)}")
         return jsonify({'message': "ERROR", 'success': False}), 500
     
+@cross_origin
 @main.route('/baja-evento/<int:id_evento>', methods=['PUT'])
 def put_baja_evento(id_evento):
         try:

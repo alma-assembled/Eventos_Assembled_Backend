@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-
+from flask_cors import cross_origin
 import traceback
 
 # Logger
@@ -7,7 +7,7 @@ from src.utils.Logger import Logger
 
 main = Blueprint('index_blueprint', __name__)
 
-
+@cross_origin
 @main.route('/')
 def index():
     try:
