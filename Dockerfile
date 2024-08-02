@@ -13,8 +13,14 @@ ENV FLASK_RUN_HOST=0.0.0.0
 
 RUN pip install --upgrade pip
 
+# Copia el archivo .env al contenedor
+COPY .env /app/.env
+
 # Instala las dependencias
 RUN pip install -r requirements.txt
+
+# Verifica las variables de entorno (opcional, solo para depuración)
+RUN cat /app/.env
 
 # Copia todos los archivos del proyecto al contenedor de trabajo
 COPY . .
