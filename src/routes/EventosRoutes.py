@@ -9,7 +9,7 @@ from flask_cors import cross_origin
 
 main = Blueprint('eventos_blueprint', __name__)
 
-@cross_origin(origins='http://192.168.1.200:3000')
+@cross_origin(origins='*')
 @main.route('/', methods=['GET'])
 def get_eventos():
     try:
