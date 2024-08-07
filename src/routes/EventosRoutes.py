@@ -5,11 +5,11 @@ from src.utils.Logger import Logger
 # Services
 from src.services.eventos import EventosService
 from src.schemas.evento import eventos_schema
-#from flask_cors import cross_origin
+from flask_cors import cross_origin
 
 main = Blueprint('eventos_blueprint', __name__)
 
-#@cross_origin
+@cross_origin(origins='http://192.168.1.200:3000')
 @main.route('/', methods=['GET'])
 def get_eventos():
     try:
@@ -23,7 +23,7 @@ def get_eventos():
         print(ex)
         return jsonify({'message': "ERROR", 'success': False})
 
-#@cross_origin
+@cross_origin(origins='http://192.168.1.200:3000')
 @main.route('/', methods=['POST'])
 def post_create_empleado():
     try:
@@ -43,7 +43,7 @@ def post_create_empleado():
         Logger.add_to_log(f"Error routes POSTEmpleados: {str(ex)}")
         return jsonify({'message': "ERROR", 'success': False}), 500
 
-#@cross_origin
+@cross_origin(origins='http://192.168.1.200:3000')
 @main.route('/<int:id_evento>', methods=['PUT'])
 def editar_evento(id_evento):    
     try:
@@ -56,7 +56,7 @@ def editar_evento(id_evento):
         Logger.add_to_log(f"Error: {str(ex)}")
         return jsonify({'message': "ERROR", 'success': False}), 500
 
-#@cross_origin
+@cross_origin(origins='http://192.168.1.200:3000')
 @main.route('/baja-evento/<int:id_evento>', methods=['PUT'])
 def put_baja_evento(id_evento):
         try:
