@@ -37,7 +37,7 @@ class EventosService():
             connection = get_connection()
             with connection.cursor() as cursor:
                 cursor.execute('''
-               INSERT INTO ASSEMBLED_DB.Eventos (TIPO, OP, TITULO, DESCRIPCION, FECHA_INICIO, FECHA_FIN, EQUIPOS) 
+               INSERT INTO Eventos (TIPO, OP, TITULO, DESCRIPCION, FECHA_INICIO, FECHA_FIN, EQUIPOS) 
                 VALUES (%s, %s, %s, %s, %s, %s, %s);
                 ''', (eventos.tipo, eventos.op, eventos.titulo, eventos.descripcion, eventos.fecha_inicio, eventos.fecha_fin, eventos.equipos))
 
@@ -57,7 +57,7 @@ class EventosService():
             connection = get_connection()
             with connection.cursor() as cursor:
                 cursor.execute('''
-                   UPDATE `ASSEMBLED_DB`.`Eventos` SET `ACTIVO` = '0' WHERE (`ID_EVENTO` = '%s'); 
+                   UPDATE `Eventos` SET `ACTIVO` = '0' WHERE (`ID_EVENTO` = '%s'); 
                 ''', (id_evento ))
             connection.commit() 
             connection.close()
@@ -107,7 +107,7 @@ class EventosService():
 
             with connection.cursor() as cursor:
                 cursor.execute(f'''
-                    UPDATE ASSEMBLED_DB.Eventos
+                    UPDATE Eventos
                     SET {set_clause_str}
                     WHERE ID_EVENTO = %s;
                 ''', tuple(values))
