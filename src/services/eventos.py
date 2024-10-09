@@ -9,7 +9,6 @@ from src.schemas.evento import eventos_schema
 from src.models.eventos import EventoModel
 
 class EventosService():
-
     @classmethod
     def get_eventos(cls):
         try:
@@ -17,7 +16,7 @@ class EventosService():
             eventos = []
             with connection.cursor() as cursor:
                 cursor.execute('''
-                    SELECT * FROM Eventos WHERE ACTIVO=1;
+                    SELECT * FROM Base_CalendarioProduccion WHERE ACTIVO=1;
                 ''')
                 resultset = cursor.fetchall()
                 for row in resultset:
@@ -38,7 +37,7 @@ class EventosService():
             connection = get_connection()
             with connection.cursor() as cursor:
                 cursor.execute('''
-               INSERT INTO ASSEMBLED_DB.Eventos (TIPO, OP, TITULO, DESCRIPCION, FECHA_INICIO, FECHA_FIN, EQUIPOS) 
+               INSERT INTO Base_CalendarioProduccion (TIPO, OP, TITULO, DESCRIPCION, FECHA_INICIO, FECHA_FIN, EQUIPOS) 
                 VALUES (%s, %s, %s, %s, %s, %s, %s);
                 ''', (eventos.tipo, eventos.op, eventos.titulo, eventos.descripcion, eventos.fecha_inicio, eventos.fecha_fin, eventos.equipos))
 
@@ -51,14 +50,14 @@ class EventosService():
             Logger.add_to_log("error", str(ex))
             Logger.add_to_log("error", traceback.format_exc())
             return False
-       
+
     @classmethod
     def baja_evento(cls, id_evento):
         try:
             connection = get_connection()
             with connection.cursor() as cursor:
                 cursor.execute('''
-                   UPDATE `ASSEMBLED_DB`.`Eventos` SET `ACTIVO` = '0' WHERE (`ID_EVENTO` = '%s'); 
+                   UPDATE `Base_CalendarioProduccion` SET `ACTIVO` = '0' WHERE (`ID_EVENTO` = '%s'); 
                 ''', (id_evento ))
             connection.commit() 
             connection.close()
@@ -108,7 +107,7 @@ class EventosService():
 
             with connection.cursor() as cursor:
                 cursor.execute(f'''
-                    UPDATE ASSEMBLED_DB.Eventos
+                    UPDATE Base_CalendarioProduccion
                     SET {set_clause_str}
                     WHERE ID_EVENTO = %s;
                 ''', tuple(values))

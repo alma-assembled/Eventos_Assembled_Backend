@@ -4,6 +4,7 @@ import traceback
 
 # Logger
 from src.utils.Logger import Logger
+from flask_cors import cross_origin
 
 main = Blueprint('index_blueprint', __name__)
 
