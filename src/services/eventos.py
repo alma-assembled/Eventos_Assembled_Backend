@@ -57,7 +57,7 @@ class EventosService():
             connection = get_connection()
             with connection.cursor() as cursor:
                 cursor.execute('''
-                   UPDATE `Base_CalendarioProduccion` SET `ACTIVO` = '0' WHERE (`ID_EVENTO` = '%s'); 
+                   UPDATE `Base_CalendarioProduccion` SET `ACTIVO` = '0' WHERE (`ID_BCALENDARIOPRODUCCION` = '%s'); 
                 ''', (id_evento ))
             connection.commit() 
             connection.close()
@@ -109,7 +109,7 @@ class EventosService():
                 cursor.execute(f'''
                     UPDATE Base_CalendarioProduccion
                     SET {set_clause_str}
-                    WHERE ID_EVENTO = %s;
+                    WHERE ID_BCALENDARIOPRODUCCION = %s;
                 ''', tuple(values))
             connection.commit()
             connection.close()
