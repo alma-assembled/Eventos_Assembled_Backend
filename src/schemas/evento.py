@@ -6,16 +6,17 @@ class TipoEvento(Enum):
     E = 'E'
     F = 'F'
     M = 'M'
+    H = 'H'
 
 class EventoSchema(Schema):
     tipo = fields.Str(validate=lambda t: t in [e.value for e in TipoEvento], required=True)
-    op = fields.Int(required=False)
+    op = fields.Int(required=False,  allow_none=True)
     titulo = fields.Str(required=True)
-    descripcion = fields.Str(required=False)
-    fecha_inicio = fields.Str(required=False)
-    fecha_fin = fields.Str(required=False)
-    equipos = fields.Str(required=False)
-    id = fields.Int(required=False)
+    descripcion = fields.Str(required=False,  allow_none=True)
+    fecha_inicio = fields.Str(required=False , allow_none=True)
+    fecha_fin = fields.Str(required=False,  allow_none=True)
+    equipos = fields.Str(required=False, allow_none=True)
+    id = fields.Int(required=False, allow_none=True)
 
     @post_load
     def make_evento(self, data, **kwargs):
