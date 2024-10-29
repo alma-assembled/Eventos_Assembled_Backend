@@ -7,6 +7,7 @@ class TipoEvento(Enum):
     F = 'F'
     M = 'M'
     H = 'H'
+    RM = 'RM'
 
 class EventoSchema(Schema):
     tipo = fields.Str(validate=lambda t: t in [e.value for e in TipoEvento], required=True)
