@@ -14,7 +14,7 @@ main = Blueprint('eventos_blueprint', __name__)
 def get_eventos():
     try:
         eventos = EventosService.get_eventos()
-        if (len(eventos) > 0):
+        if eventos and len(eventos) > 0:
             return jsonify({'Data': eventos, 'message': "SUCCESS", 'success': True})
         else:
             return jsonify({'message': "NOTFOUND", 'success': True})
